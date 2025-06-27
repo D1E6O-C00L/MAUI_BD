@@ -1,0 +1,35 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProyectoU2.Views.UpdateView"
+             Title="Editar Usuarios"
+             BackgroundColor="#f4f4f9">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="20">
+
+            <Label Text="Usuarios Registrados"
+                   FontSize="32"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center"
+                   TextColor="#3f3f3f"/>
+
+            <CollectionView x:Name="UsuariosCollectionView">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame BorderColor="Gray" CornerRadius="10" Padding="10" Margin="5">
+                            <VerticalStackLayout>
+                                <Label Text="{Binding nombre}" FontSize="18" FontAttributes="Bold"/>
+                                <Label Text="{Binding correo}" FontSize="14" TextColor="Gray"/>
+                                <Label Text="{Binding telefono}" FontSize="14" TextColor="Gray"/>
+                                <Label Text="{Binding activo, StringFormat='Activo: {0}'}" FontSize="12" />
+
+                                <Button Text="Editar" Clicked="OnEditarClicked" CommandParameter="{Binding}" />
+                            </VerticalStackLayout>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

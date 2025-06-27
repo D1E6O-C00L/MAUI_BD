@@ -1,0 +1,70 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProyectoU2.Views.EditarUsuarioModal"
+             BackgroundColor="#f4f4f9"
+             Title="Editar Usuario">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="25" Spacing="20">
+
+            <Label Text="Editar Usuario"
+                   FontSize="28"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center"
+                   TextColor="#3f3f3f" />
+
+            <Entry x:Name="NombreEntry"
+                   Placeholder="Nombre"
+                   BackgroundColor="White"
+                   TextColor="Black"
+                   PlaceholderColor="#888"
+                   HeightRequest="45"
+                   FontSize="16"
+                   Margin="0,0,0,10"/>
+
+            <Entry x:Name="CorreoEntry"
+                   Placeholder="Correo"
+                   BackgroundColor="White"
+                   TextColor="Black"
+                   PlaceholderColor="#888"
+                   HeightRequest="45"
+                   FontSize="16"
+                   Margin="0,0,0,10"/>
+
+            <Entry x:Name="TelefonoEntry"
+                   Placeholder="Teléfono"
+                   BackgroundColor="White"
+                   TextColor="Black"
+                   PlaceholderColor="#888"
+                   HeightRequest="45"
+                   FontSize="16"
+                   Margin="0,0,0,10"/>
+
+            <StackLayout Orientation="Horizontal" Spacing="10" VerticalOptions="Center">
+                <Label Text="Activo:"
+                       FontSize="16"
+                       VerticalOptions="Center"
+                       TextColor="#444"/>
+                <Switch x:Name="ActivoSwitch"
+                        OnColor="#2ecc71"
+                        ThumbColor="White" />
+            </StackLayout>
+
+            <Button Text="Guardar Cambios"
+                    BackgroundColor="#28a745"
+                    TextColor="White"
+                    FontSize="Medium"
+                    CornerRadius="10"
+                    Padding="12"
+                    Clicked="OnGuardarClicked"/>
+
+            <Button Text="Cancelar"
+                    BackgroundColor="#e74c3c"
+                    TextColor="White"
+                    FontSize="Medium"
+                    CornerRadius="10"
+                    Padding="12"
+                    Clicked="OnCancelarClicked"/>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

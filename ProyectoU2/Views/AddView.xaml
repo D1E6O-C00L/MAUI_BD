@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProyectoU2.Views.AddView"
+             Title="Agregar Usuario"
+             BackgroundColor="#f4f4f9">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="20">
+
+            <Label Text="Agregar Nuevo Usuario"
+                   FontSize="32"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center"
+                   TextColor="#3f3f3f"/>
+
+            <!-- Formulario de entrada con BoxView para bordes -->
+            <StackLayout BackgroundColor="White" Padding="15" Spacing="20" >
+
+                <Entry x:Name="NombreEntry"
+                       Placeholder="Nombre" 
+                       BackgroundColor="White"
+                       TextColor="Black"/>
+
+                <Entry x:Name="CorreoEntry"
+                       Placeholder="Correo" 
+                       BackgroundColor="White" 
+                       TextColor="Black"/>
+
+                <Entry x:Name="TelefonoEntry"
+                       Placeholder="Teléfono" 
+                       BackgroundColor="White"
+                       TextColor="Black" />
+
+                <Button Text="Agregar"
+                        BackgroundColor="#0078D4"
+                        TextColor="White"
+                        Padding="10"
+                        FontSize="Medium"
+                        HorizontalOptions="FillAndExpand"
+                        Clicked="OnAgregarClicked"/>
+            </StackLayout>
+
+            <BoxView HeightRequest="1" BackgroundColor="#cccccc" />
+
+            <Label Text="Usuarios"
+                   FontSize="24"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Start"
+                   TextColor="#3f3f3f"/>
+
+            <CollectionView x:Name="BajasCollectionView">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame BorderColor="White" CornerRadius="8" Padding="10" Margin="5">
+                            <VerticalStackLayout Spacing="5">
+                                <Label Text="{Binding nombre}" FontAttributes="Bold" FontSize="16" />
+                                <Label Text="{Binding correo}" FontSize="14" TextColor="DimGray" />
+                                <Label Text="{Binding telefono}" FontSize="14" TextColor="DimGray" />
+                                <Label Text="{Binding fecha_creacion, StringFormat='Creado el: {0:dd/MM/yyyy}'}" FontSize="12" TextColor="Gray" />
+                            </VerticalStackLayout>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
