@@ -1,70 +1,98 @@
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ProyectoU2.Views.EditarUsuarioModal"
-             BackgroundColor="#f4f4f9"
-             Title="Editar Usuario">
+             BackgroundColor="#f0f2f5" Title="Editar Usuario">
 
     <ScrollView>
-        <VerticalStackLayout Padding="25" Spacing="20">
-
-            <Label Text="Editar Usuario"
-                   FontSize="28"
+        <VerticalStackLayout Padding="30" Spacing="25">
+            <Label Text="Modificar Usuario"
+                   FontSize="32"
                    FontAttributes="Bold"
                    HorizontalOptions="Center"
-                   TextColor="#3f3f3f" />
+                   TextColor="#2c3e50"
+                   Margin="0,15,0,10"/>
+            <Border BackgroundColor="White"
+                    Stroke="#e0e0e0"
+                    StrokeThickness="1"
+                    Padding="20"
+                    Margin="0,0,0,15">
+                <Border.Shadow>
+                    <Shadow Brush="Black" Offset="5,5" Radius="15" Opacity="0.1"/>
+                </Border.Shadow>
+                <VerticalStackLayout Spacing="18">
 
-            <Entry x:Name="NombreEntry"
-                   Placeholder="Nombre"
-                   BackgroundColor="White"
-                   TextColor="Black"
-                   PlaceholderColor="#888"
-                   HeightRequest="45"
-                   FontSize="16"
-                   Margin="0,0,0,10"/>
+                    <Entry x:Name="NombreEntry"
+                           Placeholder="Nombre completo"
+                           PlaceholderColor="#8e8e93"
+                           BackgroundColor="#f9f9f9"
+                           TextColor="#333333"
+                           HeightRequest="50"
+                           Keyboard="Text"
+                           ReturnType="Next"
+                           ClearButtonVisibility="WhileEditing"
+                           FontSize="16">
+                    </Entry>
 
-            <Entry x:Name="CorreoEntry"
-                   Placeholder="Correo"
-                   BackgroundColor="White"
-                   TextColor="Black"
-                   PlaceholderColor="#888"
-                   HeightRequest="45"
-                   FontSize="16"
-                   Margin="0,0,0,10"/>
+                    <Entry x:Name="CorreoEntry"
+                           Placeholder="Correo electrónico"
+                           PlaceholderColor="#8e8e93"
+                           BackgroundColor="#f9f9f9"
+                           TextColor="#333333"
+                           HeightRequest="50"
+                           Keyboard="Email"
+                           ReturnType="Next"
+                           ClearButtonVisibility="WhileEditing"
+                           FontSize="16">
+                    </Entry>
 
-            <Entry x:Name="TelefonoEntry"
-                   Placeholder="Teléfono"
-                   BackgroundColor="White"
-                   TextColor="Black"
-                   PlaceholderColor="#888"
-                   HeightRequest="45"
-                   FontSize="16"
-                   Margin="0,0,0,10"/>
+                    <Entry x:Name="TelefonoEntry"
+                           Placeholder="Número de teléfono"
+                           PlaceholderColor="#8e8e93"
+                           BackgroundColor="#f9f9f9"
+                           TextColor="#333333"
+                           HeightRequest="50"
+                           Keyboard="Telephone"
+                           ReturnType="Done"
+                           ClearButtonVisibility="WhileEditing"
+                           FontSize="16">
+                    </Entry>
 
-            <StackLayout Orientation="Horizontal" Spacing="10" VerticalOptions="Center">
-                <Label Text="Activo:"
-                       FontSize="16"
-                       VerticalOptions="Center"
-                       TextColor="#444"/>
-                <Switch x:Name="ActivoSwitch"
-                        OnColor="#2ecc71"
-                        ThumbColor="White" />
-            </StackLayout>
+                    <HorizontalStackLayout Spacing="15" VerticalOptions="Center" HorizontalOptions="Start">
+                        <Label Text="Estado Activo:"
+                               FontSize="16"
+                               VerticalOptions="Center"
+                               TextColor="#4a4a4a"/>
+                        <Switch x:Name="ActivoSwitch"
+                                OnColor="#28a745" ThumbColor="White"
+                                Scale="1.2" />
+                    </HorizontalStackLayout>
+                </VerticalStackLayout>
+            </Border>
 
             <Button Text="Guardar Cambios"
-                    BackgroundColor="#28a745"
-                    TextColor="White"
-                    FontSize="Medium"
+                    BackgroundColor="#007aff" TextColor="White"
+                    FontSize="18"
                     CornerRadius="10"
-                    Padding="12"
-                    Clicked="OnGuardarClicked"/>
+                    Padding="15"
+                    Clicked="OnGuardarClicked"
+                    HorizontalOptions="FillAndExpand">
+                <Button.Shadow>
+                    <Shadow Brush="Black" Offset="5,5" Radius="15" Opacity="0.2"/>
+                </Button.Shadow>
+            </Button>
 
             <Button Text="Cancelar"
-                    BackgroundColor="#e74c3c"
-                    TextColor="White"
-                    FontSize="Medium"
+                    BackgroundColor="#6c757d" TextColor="White"
+                    FontSize="18"
                     CornerRadius="10"
-                    Padding="12"
-                    Clicked="OnCancelarClicked"/>
+                    Padding="15"
+                    Clicked="OnCancelarClicked"
+                    HorizontalOptions="FillAndExpand">
+                <Button.Shadow>
+                    <Shadow Brush="Black" Offset="5,5" Radius="15" Opacity="0.15"/>
+                </Button.Shadow>
+            </Button>
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

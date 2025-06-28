@@ -1,31 +1,65 @@
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ProyectoU2.Views.UpdateView"
              Title="Editar Usuarios"
-             BackgroundColor="#f4f4f9">
-
+             BackgroundColor="#e8ecf4">
     <ScrollView>
-        <VerticalStackLayout Padding="20" Spacing="20">
+        <VerticalStackLayout Padding="30" Spacing="25">
 
-            <Label Text="Usuarios Registrados"
-                   FontSize="32"
+            <Label Text="Gestionar Usuarios"
+                   FontSize="36"
                    FontAttributes="Bold"
                    HorizontalOptions="Center"
-                   TextColor="#3f3f3f"/>
-
-            <CollectionView x:Name="UsuariosCollectionView">
+                   TextColor="#2c3e50"
+                   Margin="0,20,0,10"/>
+            <CollectionView x:Name="UsuariosCollectionView" SelectionMode="None">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Vertical" ItemSpacing="15" />
+                </CollectionView.ItemsLayout>
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <Frame BorderColor="Gray" CornerRadius="10" Padding="10" Margin="5">
-                            <VerticalStackLayout>
-                                <Label Text="{Binding nombre}" FontSize="18" FontAttributes="Bold"/>
-                                <Label Text="{Binding correo}" FontSize="14" TextColor="Gray"/>
-                                <Label Text="{Binding telefono}" FontSize="14" TextColor="Gray"/>
-                                <Label Text="{Binding activo, StringFormat='Activo: {0}'}" FontSize="12" />
+                        <Border BackgroundColor="White"
+                                Padding="15"
+                                Stroke="#e0e0e0"
+                                StrokeThickness="1">
+                            <Border.Shadow>
+                                <Shadow Brush="Black" Offset="3,3" Radius="15" Opacity="0.1"/>
+                            </Border.Shadow>
+                            <Grid ColumnDefinitions="*,Auto" RowSpacing="5">
+                                <VerticalStackLayout Grid.Column="0" Spacing="5">
+                                    <Label Text="{Binding nombre}"
+                                           FontSize="20"
+                                           FontAttributes="Bold"
+                                           TextColor="#333333" />
+                                    <Label Text="{Binding correo}"
+                                           FontSize="15"
+                                           TextColor="#555555" />
+                                    <Label Text="{Binding telefono}"
+                                           FontSize="15"
+                                           TextColor="#555555" />
+                                    <Label Text="{Binding activo, StringFormat='Estado: {0}'}"
+                                           FontSize="14"
+                                           TextColor="{Binding activo, Converter={StaticResource BooleanToColorConverter}}" />
+                                </VerticalStackLayout>
 
-                                <Button Text="Editar" Clicked="OnEditarClicked" CommandParameter="{Binding}" />
-                            </VerticalStackLayout>
-                        </Frame>
+                                <Button Grid.Column="1"
+                                        Text="Editar"
+                                        BackgroundColor="#007aff"
+                                        TextColor="White"
+                                        Padding="10,5"
+                                        FontSize="14"
+                                        CornerRadius="8"
+                                        VerticalOptions="Center"
+                                        Clicked="OnEditarClicked"
+                                        CommandParameter="{Binding}"
+                                        WidthRequest="80">
+                                    <Button.Shadow>
+                                        <Shadow Brush="Black" Offset="2,2" Radius="10" Opacity="0.15"/>
+                                    </Button.Shadow>
+                                </Button>
+                            </Grid>
+                        </Border>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>

@@ -3,64 +3,106 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ProyectoU2.Views.SearchView"
              Title="Buscar Usuario"
-             BackgroundColor="#f4f4f9">
-
+             BackgroundColor="#e8ecf4">
     <ScrollView>
-        <VerticalStackLayout Padding="20" Spacing="20">
+        <VerticalStackLayout Padding="30" Spacing="25">
 
-            <!-- Título de la sección -->
             <Label Text="Buscar Usuario"
-                   FontSize="32"
+                   FontSize="36"
                    FontAttributes="Bold"
                    HorizontalOptions="Center"
-                   TextColor="#3f3f3f"/>
+                   TextColor="#2c3e50"
+                   Margin="0,20,0,10"/>
 
-            <!-- Caja de búsqueda con borde -->
-            <StackLayout BackgroundColor="White" Padding="15" Spacing="20">
+            <Border BackgroundColor="White"
+                    Stroke="#dcdcdc"
+                    StrokeThickness="1"
+                    Padding="20"
+                    Margin="0,0,0,15">
+                <Border.Shadow>
+                    <Shadow Brush="Black" Offset="5,5" Radius="15" Opacity="0.1"/>
+                </Border.Shadow>
+                <VerticalStackLayout Spacing="15">
 
-                <Entry x:Name="BusquedaEntry" Placeholder="Buscar por nombre, correo o teléfono" TextColor="Black"
-                       BackgroundColor="White" />
+                    <Entry x:Name="BusquedaEntry"
+                           Placeholder="Nombre, correo o teléfono"
+                           PlaceholderColor="#8e8e93"
+                           BackgroundColor="#f9f9f9"
+                           TextColor="#333333"
+                           HeightRequest="50"
+                           Keyboard="Text"
+                           ReturnType="Search"
+                           ClearButtonVisibility="WhileEditing"
+                           FontSize="16"
+                           Completed="OnBuscarClicked"></Entry>
 
-                <!-- Botón de Búsqueda -->
-                <Button Text="Buscar"
-        BackgroundColor="#0078D4"
-        TextColor="White"
-        Padding="10"
-        FontSize="Medium"
-        HorizontalOptions="FillAndExpand"
-        Clicked="OnBuscarClicked" />
+                    <Button Text="Buscar"
+                            BackgroundColor="#007aff"
+                            TextColor="White"
+                            Padding="15"
+                            FontSize="18"
+                            CornerRadius="10"
+                            HorizontalOptions="FillAndExpand"
+                            Clicked="OnBuscarClicked">
+                        <Button.Shadow>
+                            <Shadow Brush="Black" Offset="5,5" Radius="15" Opacity="0.2"/>
+                        </Button.Shadow>
+                    </Button>
+                </VerticalStackLayout>
+            </Border>
 
-            </StackLayout>
+            <BoxView HeightRequest="1" BackgroundColor="#cccccc" Margin="0,10,0,10" />
 
-            <!-- Separador de secciones -->
-            <BoxView HeightRequest="1" BackgroundColor="#cccccc" />
-
-
-            <!-- Resultados de la búsqueda -->
-            <Label Text="Resultados"
-                   FontSize="24"
+            <Label Text="Resultados de Búsqueda"
+                   FontSize="28"
                    FontAttributes="Bold"
                    HorizontalOptions="Start"
-                   TextColor="#3f3f3f"/>
+                   TextColor="#2c3e50"
+                   Margin="0,10,0,10"/>
 
-            <StackLayout BackgroundColor="White" Padding="15" Spacing="10">
-
-                <CollectionView x:Name="ResultadoCollectionView">
-                    <CollectionView.ItemTemplate>
-                        <DataTemplate>
-                            <Grid Padding="10" ColumnDefinitions="Auto, Auto, Auto, Auto">
-                                <VerticalStackLayout Spacing="5">
-                                    <Label Text="{Binding id}" HorizontalOptions="Center" TextColor="White"/>
-                                    <Label Text="{Binding nombre}" HorizontalOptions="Start" />
-                                    <Label Text="{Binding correo}" HorizontalOptions="Start" />
-                                    <Label Text="{Binding telefono}" HorizontalOptions="Start" />
-                                </VerticalStackLayout>
-                                    
-                            </Grid>
-                        </DataTemplate>
-                    </CollectionView.ItemTemplate>
-                </CollectionView>
-            </StackLayout>
+            <CollectionView x:Name="ResultadoCollectionView" SelectionMode="None">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Vertical" ItemSpacing="15" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.EmptyView>
+                    <ContentView>
+                        <Label Text="No se encontraron usuarios o aún no ha realizado una búsqueda."
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center"
+                               TextColor="#777777"
+                               FontSize="16"
+                               Margin="0,50,0,0"/>
+                    </ContentView>
+                </CollectionView.EmptyView>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Border BackgroundColor="White"
+                                Padding="15"
+                                Stroke="#e0e0e0"
+                                StrokeThickness="1">
+                            <Border.Shadow>
+                                <Shadow Brush="Black" Offset="3,3" Radius="15" Opacity="0.1"/>
+                            </Border.Shadow>
+                            <VerticalStackLayout Spacing="5">
+                                <Label Text="{Binding nombre}"
+                                       FontAttributes="Bold"
+                                       FontSize="18"
+                                       TextColor="#333333" />
+                                <Label Text="{Binding correo}"
+                                       FontSize="15"
+                                       TextColor="#555555" />
+                                <Label Text="{Binding telefono}"
+                                       FontSize="15"
+                                       TextColor="#555555" />
+                                <Label Text="{Binding id, StringFormat='ID: {0}'}"
+                                       FontSize="12"
+                                       TextColor="#999999"
+                                       IsVisible="False" />
+                            </VerticalStackLayout>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
 
         </VerticalStackLayout>
     </ScrollView>

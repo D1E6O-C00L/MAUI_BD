@@ -1,36 +1,50 @@
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ProyectoU2.Views.DeleteList"
              Title="Lista de Bajas"
-             BackgroundColor="#f4f4f9">
-
+             BackgroundColor="#e8ecf4">
     <ScrollView>
-        <VerticalStackLayout Padding="20" Spacing="20">
-
-            <!-- Título de la sección -->
-            <Label Text="Personas Dadas de Baja"
-                   FontSize="32"
+        <VerticalStackLayout Padding="30" Spacing="25">
+            <Label Text="Usuarios Inactivos"
+                   FontSize="36"
                    FontAttributes="Bold"
                    HorizontalOptions="Center"
-                   TextColor="#3f3f3f"/>
-
-            <!-- Lista de bajas -->
-            <StackLayout BackgroundColor="Black" Padding="15" Spacing="10">
-                <CollectionView x:Name="BajasCollectionView">
-                    <CollectionView.ItemTemplate>
-                        <DataTemplate>
-                            <Frame BorderColor="Gray" CornerRadius="8" Padding="10" Margin="5">
-                                <VerticalStackLayout Spacing="5">
-                                    <Label Text="{Binding nombre}" FontAttributes="Bold" FontSize="16" />
-                                    <Label Text="{Binding correo}" FontSize="14" TextColor="DimGray" />
-                                    <Label Text="{Binding telefono}" FontSize="14" TextColor="DimGray" />
-                                    <Label Text="{Binding fecha_creacion, StringFormat='Creado el: {0:dd/MM/yyyy}'}" FontSize="12" TextColor="Gray" />
-                                </VerticalStackLayout>
-                            </Frame>
-                        </DataTemplate>
-                    </CollectionView.ItemTemplate>
-                </CollectionView>
-            </StackLayout>
+                   TextColor="#2c3e50"
+                   Margin="0,20,0,10"/>
+            <CollectionView x:Name="BajasCollectionView" SelectionMode="None">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Vertical" ItemSpacing="15" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Border BackgroundColor="White"
+                                Padding="15"
+                                Stroke="#e0e0e0"
+                                StrokeThickness="1">
+                            <Border.Shadow>
+                                <Shadow Brush="Black" Offset="3,3" Radius="15" Opacity="0.1"/>
+                            </Border.Shadow>
+                            <VerticalStackLayout Spacing="5">
+                                <Label Text="{Binding nombre}"
+                                       FontAttributes="Bold"
+                                       FontSize="18"
+                                       TextColor="#333333" />
+                                <Label Text="{Binding correo}"
+                                       FontSize="15"
+                                       TextColor="#555555" />
+                                <Label Text="{Binding telefono}"
+                                       FontSize="15"
+                                       TextColor="#555555" />
+                                <Label Text="{Binding fecha_creacion, StringFormat='Fecha de Baja: {0:dd/MM/yyyy}'}"
+                                       FontSize="13"
+                                       TextColor="#777777"
+                                       Margin="0,5,0,0" />
+                            </VerticalStackLayout>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
 
         </VerticalStackLayout>
     </ScrollView>

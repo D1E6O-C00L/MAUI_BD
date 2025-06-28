@@ -3,67 +3,123 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ProyectoU2.Views.AddView"
              Title="Agregar Usuario"
-             BackgroundColor="#f4f4f9">
-
+             BackgroundColor="#e8ecf4">
     <ScrollView>
-        <VerticalStackLayout Padding="20" Spacing="20">
+        <VerticalStackLayout Padding="30" Spacing="25">
 
-            <Label Text="Agregar Nuevo Usuario"
-                   FontSize="32"
+            <Label Text="Crear Nuevo Usuario"
+                   FontSize="36"
                    FontAttributes="Bold"
                    HorizontalOptions="Center"
-                   TextColor="#3f3f3f"/>
+                   TextColor="#2c3e50"
+                   Margin="0,20,0,10"/>
 
-            <!-- Formulario de entrada con BoxView para bordes -->
-            <StackLayout BackgroundColor="White" Padding="15" Spacing="20" >
+            <Border BackgroundColor="White"
+                    Stroke="#dcdcdc"
+                    StrokeThickness="1"
+                    Padding="25"
+                    Margin="0,10,0,10">
+                <Border.Shadow>
+                    <Shadow Brush="Black" Offset="5,5" Radius="15" Opacity="0.1"/>
+                </Border.Shadow>
+                <VerticalStackLayout Spacing="18">
 
-                <Entry x:Name="NombreEntry"
-                       Placeholder="Nombre" 
-                       BackgroundColor="White"
-                       TextColor="Black"/>
+                    <Entry x:Name="NombreEntry"
+                           Placeholder="Nombre completo"
+                           PlaceholderColor="#8e8e93"
+                           BackgroundColor="#f9f9f9"
+                           TextColor="#333333"
+                           HeightRequest="50"
+                           Keyboard="Text"
+                           ReturnType="Next"
+                           ClearButtonVisibility="WhileEditing"
+                           FontSize="16">
+                    </Entry>
 
-                <Entry x:Name="CorreoEntry"
-                       Placeholder="Correo" 
-                       BackgroundColor="White" 
-                       TextColor="Black"/>
+                    <Entry x:Name="CorreoEntry"
+                           Placeholder="Correo electrónico"
+                           PlaceholderColor="#8e8e93"
+                           BackgroundColor="#f9f9f9"
+                           TextColor="#333333"
+                           HeightRequest="50"
+                           Keyboard="Email"
+                           ReturnType="Next"
+                           ClearButtonVisibility="WhileEditing"
+                           FontSize="16">
+                    </Entry>
 
-                <Entry x:Name="TelefonoEntry"
-                       Placeholder="Teléfono" 
-                       BackgroundColor="White"
-                       TextColor="Black" />
+                    <Entry x:Name="TelefonoEntry"
+                           Placeholder="Número de teléfono"
+                           PlaceholderColor="#8e8e93"
+                           BackgroundColor="#f9f9f9"
+                           TextColor="#333333"
+                           HeightRequest="50"
+                           Keyboard="Telephone"
+                           ReturnType="Done"
+                           ClearButtonVisibility="WhileEditing"
+                           FontSize="16">
+                    </Entry>
 
-                <Button Text="Agregar"
-                        BackgroundColor="#0078D4"
-                        TextColor="White"
-                        Padding="10"
-                        FontSize="Medium"
-                        HorizontalOptions="FillAndExpand"
-                        Clicked="OnAgregarClicked"/>
-            </StackLayout>
+                    <Button Text="Agregar Usuario"
+                            BackgroundColor="#007aff"
+                            TextColor="White"
+                            Padding="15"
+                            FontSize="18"
+                            CornerRadius="10"
+                            HorizontalOptions="FillAndExpand"
+                            Clicked="OnAgregarClicked"
+                            Margin="0,10,0,0">
+                        <Button.Shadow>
+                            <Shadow Brush="Black" Offset="5,5" Radius="15" Opacity="0.2"/>
+                        </Button.Shadow>
+                    </Button>
+                </VerticalStackLayout>
+            </Border>
 
-            <BoxView HeightRequest="1" BackgroundColor="#cccccc" />
+            <BoxView HeightRequest="1" BackgroundColor="#cccccc" Margin="0,15,0,15" />
 
-            <Label Text="Usuarios"
-                   FontSize="24"
+            <Label Text="Lista de Usuarios"
+                   FontSize="28"
                    FontAttributes="Bold"
                    HorizontalOptions="Start"
-                   TextColor="#3f3f3f"/>
+                   TextColor="#2c3e50"
+                   Margin="0,10,0,10"/>
 
-            <CollectionView x:Name="BajasCollectionView">
+            <CollectionView x:Name="BajasCollectionView" SelectionMode="None">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Vertical" ItemSpacing="10" />
+                </CollectionView.ItemsLayout>
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <Frame BorderColor="White" CornerRadius="8" Padding="10" Margin="5">
-                            <VerticalStackLayout Spacing="5">
-                                <Label Text="{Binding nombre}" FontAttributes="Bold" FontSize="16" />
-                                <Label Text="{Binding correo}" FontSize="14" TextColor="DimGray" />
-                                <Label Text="{Binding telefono}" FontSize="14" TextColor="DimGray" />
-                                <Label Text="{Binding fecha_creacion, StringFormat='Creado el: {0:dd/MM/yyyy}'}" FontSize="12" TextColor="Gray" />
-                            </VerticalStackLayout>
-                        </Frame>
+                        <Border BackgroundColor="White"
+                                Padding="15"
+                                Stroke="#e0e0e0"
+                                StrokeThickness="1">
+                            <Border.Shadow>
+                                <Shadow Brush="Black" Offset="2,2" Radius="10" Opacity="0.1"/>
+                            </Border.Shadow>
+                            <Grid ColumnDefinitions="*,Auto">
+                                <VerticalStackLayout Grid.Column="0" Spacing="5">
+                                    <Label Text="{Binding nombre}"
+                                           FontAttributes="Bold"
+                                           FontSize="18"
+                                           TextColor="#333333" />
+                                    <Label Text="{Binding correo}"
+                                           FontSize="15"
+                                           TextColor="#555555" />
+                                    <Label Text="{Binding telefono}"
+                                           FontSize="15"
+                                           TextColor="#555555" />
+                                    <Label Text="{Binding fecha_creacion, StringFormat='Registrado el: {0:dd/MM/yyyy}'}"
+                                           FontSize="13"
+                                           TextColor="#777777"
+                                           Margin="0,5,0,0" />
+                                </VerticalStackLayout>
+                            </Grid>
+                        </Border>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
-
 
         </VerticalStackLayout>
     </ScrollView>
